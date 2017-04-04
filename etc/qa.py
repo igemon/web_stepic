@@ -1,12 +1,14 @@
-﻿CONFIG = {
-    'mode': 'django',
+﻿# $ gunicorn -c /absolute/path/to/this/file
+
+CONFIG = {
+    'mode': 'wsgi',
     'working_dir': '/home/box/web/ask',
-    #'python': '/usr/bin/python',
     'args': (
         '--bind=0.0.0.0:8000',
-        #'--workers=16',
-        #'--timeout=60',
-		'--log-level=debug',
-        'ask',
+        '--access-logfile access.log',
+        '--error-logfile error.log',
+        '--workers=4',
+        '--timeout=60',
+        'ask.wsgi:application',
     ),
 }

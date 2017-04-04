@@ -1,12 +1,14 @@
-﻿CONFIG = {
+﻿# $ gunicorn -c /absolute/path/to/this/file
+
+CONFIG = {
     'mode': 'wsgi',
     'working_dir': '/home/box/web',
-    'python': '/usr/bin/python',
     'args': (
         '--bind=0.0.0.0:8080',
-        '--workers=16',
+        '--access-logfile access.log',
+        '--error-logfile error.log',
+        '--workers=4',
         '--timeout=60',
-		'--log-level=debug',
-        'hello',
+        'hello:app',
     ),
 }
