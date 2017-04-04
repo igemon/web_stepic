@@ -1,0 +1,18 @@
+[2017-04-04 11:45:04 +0000] [513] [INFO] Starting gunicorn 19.6.0
+[2017-04-04 11:45:04 +0000] [513] [INFO] Listening at: http://0.0.0.0:8000 (513)
+[2017-04-04 11:45:04 +0000] [513] [INFO] Using worker: sync
+[2017-04-04 11:45:04 +0000] [516] [INFO] Booting worker with pid: 516
+[2017-04-04 11:45:11 +0000] [513] [INFO] Handling signal: int
+[2017-04-04 11:45:11 +0000] [516] [INFO] Worker exiting (pid: 516)
+[2017-04-04 11:45:11 +0000] [513] [INFO] Shutting down: Master
+[2017-04-04 11:45:16 +0000] [518] [INFO] Starting gunicorn 19.6.0
+[2017-04-04 11:45:16 +0000] [518] [INFO] Listening at: http://0.0.0.0:8000 (518)
+[2017-04-04 11:45:16 +0000] [518] [INFO] Using worker: sync
+[2017-04-04 11:45:16 +0000] [521] [INFO] Booting worker with pid: 521
+[2017-04-04 11:51:18 +0000] [518] [INFO] Handling signal: term
+[2017-04-04 11:51:18 +0000] [521] [INFO] Worker exiting (pid: 521)
+[2017-04-04 11:51:19 +0000] [518] [INFO] Shutting down: Master
+[2017-04-04 11:52:03 +0000] [617] [INFO] Starting gunicorn 19.6.0
+[2017-04-04 11:52:03 +0000] [617] [INFO] Listening at: http://0.0.0.0:8000 (617)
+[2017-04-04 11:52:03 +0000] [617] [INFO] Using worker: sync
+[2017-04-04 11:52:03 +0000] [620] [INFO] Booting worker with pid: 620
