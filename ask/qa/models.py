@@ -9,7 +9,7 @@ class QuestionManager(models.Manager):
                 pass 
 
 class Question(models.Model):
-	objects = QuestionManager()
+    objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
