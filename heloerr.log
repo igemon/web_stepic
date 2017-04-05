@@ -1,4 +1,0 @@
-[2017-04-04 11:46:03 +0000] [523] [INFO] Starting gunicorn 19.6.0
-[2017-04-04 11:46:03 +0000] [523] [INFO] Listening at: http://0.0.0.0:8080 (523)
-[2017-04-04 11:46:03 +0000] [523] [INFO] Using worker: sync
-[2017-04-04 11:46:03 +0000] [526] [INFO] Booting worker with pid: 526
