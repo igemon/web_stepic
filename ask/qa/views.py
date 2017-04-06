@@ -6,7 +6,7 @@ from django.contrib.auth import login,logout
 from qa.models import Question
 #from qa.forms import AskForm, AnswerForm, LoginForm, SignupForm
 
-def paginator(request, qs):
+def paginate(request, qs):
 	try:
 		limit = int(request.GET.get('limit',10))
 	except ValueError:
@@ -25,8 +25,8 @@ def paginator(request, qs):
 	return page, paginator
 
 def question_list(request):
-	qw = Question.objects.all()
-	qw = qw.order_by('-added_at')
+	qs = Question.objects.all()
+	qs = qs.order_by('-added_at')
 	page, paginator = paginate(request,qs)
 	paginator.baseurl = reverse('question_list')+ '?page='
 
