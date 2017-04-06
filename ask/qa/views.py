@@ -40,7 +40,7 @@ def popular(request):
 	qs = Question.objects.all()
 	qs = qs.order_by('-rating')
 	page, paginator = paginate(request, qs)
-	paginator.baseurl = reerse('popular') + '?page='
+	paginator.baseurl = reverse('popular') + '?page='
 
 	return render(request, 'list_rating.html', {
 		'questions':page.object_list,
@@ -51,11 +51,11 @@ def popular(request):
 def question_detail(request, pk):
 	question = get_object_or_404(Question, id=pk)
 	answers = question.answer_set.all()
-	form= AnswerForm(initial={'question':str(pk)})
+	#form = AnswerForm(initial={'question':str(pk)})
 	return render(request, 'detail.html',{
 		'question': question,
 		'answers':answers,
-		'form':form,
+	#	'form':form,
 	})
 
 
