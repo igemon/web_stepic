@@ -1,14 +1,14 @@
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.paginatorimport Paginator, EmptyPage
+from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout
 from qa.models import Question
-from qa.forms import AskForm, AnswerForm, LoginForm, SignupForm
+#from qa.forms import AskForm, AnswerForm, LoginForm, SignupForm
 
 def paginator(request, qs):
 	try:
-		limit = int(request.GET.get('limit',10)
+		limit = int(request.GET.get('limit',10))
 	except ValueError:
 		limit = 10
 	if limit > 100:
@@ -27,7 +27,7 @@ def paginator(request, qs):
 def question_list(request):
 	qw = Question.objects.all()
 	qw = qw.order_by('-added_at')
-	page, paginator = paginate)request,qs)
+	page, paginator = paginate(request,qs)
 	paginator.baseurl = reverse('question_list')+ '?page='
 
 	return render(request, 'list.html', {
