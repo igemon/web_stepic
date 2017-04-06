@@ -4,7 +4,8 @@ from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout
 from qa.models import Question
-#from qa.forms import AskForm, AnswerForm, LoginForm, SignupForm
+from qa.forms import AskForm, AnswerForm
+#from qa.forms  LoginForm, SignupForm
 
 def paginate(request, qs):
 	try:
@@ -51,13 +52,38 @@ def popular(request):
 def question_detail(request, pk):
 	question = get_object_or_404(Question, id=pk)
 	answers = question.answer_set.all()
-	#form = AnswerForm(initial={'question':str(pk)})
+	form = AnswerForm(initial={'question':str(pk)})
 	return render(request, 'detail.html',{
 		'question': question,
 		'answers':answers,
-	#	'form':form,
+		'form':form,
 	})
 
+def question_ask(request):
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            form._user = request.user
+            ask = form.save()
+            url = reverse('question_detail', args=[ask.id])
+            return HttpResponseRedirect(url)
+    else:
+        form = AskForm()
+
+    return render(request, 'ask.html', {
+        'form': form
+    })
+
+
+def question_answer(request):
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            form._user = request.user
+            answer = form.save()
+            url = reverse('question_detail', args=[answer.question.id])
+            return HttpResponseRedirect(url)
+    return HttpResponseRedirect('/')
 
 
 
