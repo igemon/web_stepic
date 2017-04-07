@@ -16,6 +16,7 @@ from django.conf.urls import include, url
 
 
 from qa.views import test, question_list, question_detail, popular
+from qa.views import question_ask, question_answer
 
 urlpatterns = [
 	url(r'^$', question_list, name='question_list'),
