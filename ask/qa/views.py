@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout
 from qa.models import Question
 from qa.forms import AskForm, AnswerForm
-#from qa.forms  LoginForm, SignupForm
+from qa.forms  LoginForm, SignupForm
 
 def paginate(request, qs):
 	try:
@@ -86,7 +86,33 @@ def question_answer(request):
     return HttpResponseRedirect('/')
 
 
+def user_signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/')
+    form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
 
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/')
+    form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
 
 def test(request, *args, **kwargs):
 	return HttpResponse('OK')

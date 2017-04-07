@@ -17,12 +17,13 @@ from django.conf.urls import include, url
 
 from qa.views import test, question_list, question_detail, popular
 from qa.views import question_ask, question_answer
+from qa.views import user_signup, user_login, user_logout
 
 urlpatterns = [
 	url(r'^$', question_list, name='question_list'),
-	url(r'^login/', test, name='login'),
-	url(r'^signup/', test, name='signup'),
-	url(r'^logout/', test, name='logout'),
+	url(r'^login/', user_login, name='login'),
+	url(r'^signup/', user_signup, name='signup'),
+	url(r'^logout/', user_logout, name='logout'),
 	url(r'^question/(?P<pk>\d+)/', question_detail, 
 					name='question_detail'),
 	url(r'^ask/', question_ask, name='question_ask'),
