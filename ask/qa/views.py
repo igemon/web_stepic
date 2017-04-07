@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout
 from qa.models import Question
 from qa.forms import AskForm, AnswerForm
-from qa.forms  LoginForm, SignupForm
+from qa.forms import LoginForm, SignupForm
 
 def paginate(request, qs):
 	try:
